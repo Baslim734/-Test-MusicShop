@@ -1,11 +1,11 @@
  package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import java.util.jar.Attributes
 
  var b = 0
 
@@ -80,16 +80,25 @@ import java.util.jar.Attributes
 
      fun addToCart(view: View) {
          val spinner: Spinner = findViewById(R.id.spinner)
-         var userNameEditText: EditText = findViewById(R.id.nameEditText)
-         var getName:TextView = findViewById(R.id.nameEditText)
-         var getGoodsQuantity:TextView = findViewById(R.id.quantityText)
-         var getPriceTotal:TextView = findViewById(R.id.priceTotal)
-         Log.d("printusername" ,getGoodsQuantity.text.toString())
-         Log.d("printusername" ,spinner.selectedItem.toString())
-         Log.d("printusername" ,getPriceTotal.text.toString())
-         var order = Order(getName.text.toString(),spinner.selectedItem.toString(),getGoodsQuantity.text.toString().toInt(),getPriceTotal.text.toString().toDouble())
-         order.userName = userNameEditText.text.toString()
-         Log.d("printusername" ,order.userName)
+         var buffer:TextView = findViewById(R.id.nameEditText)// Переменная "буфер" обмена так как
+         // котлин ругается на выражение findViewById(R.id.nameEditText).text.toString()
+         var getName:String = buffer.text.toString()
+         buffer = findViewById(R.id.quantityText)
+         var getGoodsQuantity:Int = buffer.text.toString().toInt()
+         buffer = findViewById(R.id.priceTotal)
+         var getPriceTotal:Double = buffer.text.toString().toDouble()
+         var spinnerValue:String = spinner.selectedItem.toString()
+         val orderIntent = Intent(this,OrderActivity::class.java)
+         var order = Order(getName,spinnerValue,getGoodsQuantity, getPriceTotal)
+         val goodsName = spinner.selectedItem.toString()
+         val price = goodsMap[goodsName].toString().toDouble()
+         orderIntent.putExtra("getName",order.userName)
+         orderIntent.putExtra("spinnerValue",order.goodsName)
+         orderIntent.putExtra("getGoodsQuantity",order.quantity)
+         orderIntent.putExtra("getPriceTotal",order.orderPrice)
+         orderIntent.putExtra("getPrice",price)
+         startActivity(orderIntent)
      }
+
  }
 

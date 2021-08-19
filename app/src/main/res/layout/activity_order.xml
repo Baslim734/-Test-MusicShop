@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    tools:context=".OrderActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer name: Default name"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:fontFamily="@font/aclonica"
+        android:id="@+id/nameOrder">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aclonica"
+        android:text="Goods name: Default goods"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:id="@+id/goodsName">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity: 0"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:textSize="16dp"
+        android:fontFamily="@font/aclonica"
+        android:id="@+id/quantityText">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aclonica"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:textSize="16dp"
+        android:text="Price: Default price"
+        android:id="@+id/price">
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aclonica"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:textSize="16dp"
+        android:text="Price total: Default price"
+        android:id="@+id/priceTotal">
+    </TextView>
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/black"
+    android:layout_marginTop="400dp"
+    android:onClick="submitOrder"
+    android:text="Submit Order"
+    tools:ignore="OnClick">
+
+</Button>
+</androidx.appcompat.widget.LinearLayoutCompat>
