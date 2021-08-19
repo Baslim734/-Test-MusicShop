@@ -32,6 +32,8 @@ class OrderActivity : AppCompatActivity() {
     }
 
     fun submitOrder(view: View) {
+        val adresses = arrayListOf<String>()
+        adresses.add("default.com")
         val mIntent = Intent(Intent.ACTION_SEND)
         mIntent.type = "text/plain"
         var nameTextView: TextView = findViewById(R.id.nameOrder)
@@ -45,6 +47,10 @@ class OrderActivity : AppCompatActivity() {
         var priceView: TextView = findViewById(R.id.price)
         var price = priceView.text
         var email = "$nameText\n$goodsName\n$quantityText\n$priceTotal\n$price"
+        mIntent.setData(Uri.parse("mailto:"))
+        mIntent.type = "text/plain"
+        mIntent.putExtra(Intent.EXTRA_EMAIL,adresses)
+        mIntent.putExtra(Intent.EXTRA_SUBJECT, "order")
         mIntent.putExtra(Intent.EXTRA_TEXT, email)
 
         startActivity(Intent.createChooser(mIntent, "Send Email"))
